@@ -1,0 +1,41 @@
+﻿@using Bikers.Helpers
+@model Bikers.Models.UpcomingEvents
+
+@{
+    ViewBag.Title = "UpcomingEventDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="global-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block text-center">
+                    <h1>BIG HEADLINE FOR BLOG</h1>
+                    <p>13 MARCH 2015 / BY SARA SMITH</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="blog-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-offset-2">
+                <div class="blog-img row">
+                    <div class="col-md-12">
+                        <img class="img-responsive" src="~/Content/images/UpcomingEvents/@Model.Images" alt="">
+                    </div>
+                </div>
+                <div class="block">
+                    <span class="first-child-span text-center"><h1>@Model.EventName</h1></span>
+                    <h5 style="text-align:center">Event Date: @Html.ShowDate(Model.EventDate)</h5><br />
+                    <h3 style="text-align:center">Event Location: @Model.Location</h3>
+
+                    <p class="first-child">@Html.Raw(Model.Remarks)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

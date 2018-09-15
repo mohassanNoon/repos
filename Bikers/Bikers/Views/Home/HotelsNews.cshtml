@@ -1,0 +1,57 @@
+﻿@using Bikers.Helpers
+
+@model Bikers.Models.Hotels
+@{
+    ViewBag.Title = "HotelsNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>HotelsNews</h2>
+
+
+<section id="global-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block text-center">
+                    <h1>Beautiful Places to Stay While on Tour</h1>
+                    @*<p>13 MARCH 2015 / BY SARA SMITH</p>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="blog-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-offset-2">
+                <div class="blog-img row">
+                    <div class="col-md-12">
+                        <img class="img-responsive" src="~/Content/images/HotelsImg/@Model.Image" alt="">
+                    </div>
+                </div>
+                <div class="block">
+                    <span class="first-child-span text-center"><h1>@Model.Name</h1></span>
+
+                    <span class="first-child-span text-center"><h2><p class="first-child">Phone Number:<br />@Model.Phone</p></h2></span>
+                    <span class="first-child-span text-center"><h2><p class="first-child">Hotel Address:<br />@Model.Address</p></h2></span>
+
+
+
+
+
+                    <p class="first-child">@Html.Raw(Model.Description)</p>
+                    @*<p class="first-child">@Html.Raw(Model.Remarks)
+        @*<h3>@Model.Remarks</h3>*@
+                    @*<span class="icon"><i class="ion-quote"></i></span>
+        <h3>@Model.Remarks</h3>
+        <span class="icon"><i class="ion-quote"></i></span>*@
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+

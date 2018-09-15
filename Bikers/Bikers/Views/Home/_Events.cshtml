@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Bikers.Models.Events>
+
+<section id="pricing-table">
+    <div class="container">
+        <div class="row">
+            <div class="title">
+                <h2>Events</h2>
+                <p>Our Events and their Details</p>
+            </div>
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-4 col">
+                    <div class="block text-center wow fadeInRight" data-wow-delay=".3s">
+                        <ul>
+                            <li>
+                                <h4>@item.EventName</h4>
+                            </li>
+                            <li><p>@item.Remarks</p></li>
+                            <li><p>Click Below to view the details.</p></li>
+                          
+                            <li>
+                                <a href="~/Home/EventDetails/?id=@item.Id" class="btn btn-buy">Show Event</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+

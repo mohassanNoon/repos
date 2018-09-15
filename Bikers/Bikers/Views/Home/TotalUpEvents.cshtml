@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Bikers.Models.UpcomingEvents>
+@{
+    ViewBag.Title = "TotalUpEvents";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="testimonial">
+    <div class="container">
+        <div class="row">
+            <div class="title">
+                <h2>Upcoming Events</h2>
+                <p>Our Upcoming Events & their Details.</p>
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="col col-md-6">
+                    <div class="media wow fadeInLeft" data-wow-delay=".3s">
+                        <div class="media-body">
+                            <a href="~/Home/UpcomingEventDetails/?id=@item.Id"><h4 class="media-heading">@item.EventName</h4></a>
+                            <p>@item.Description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

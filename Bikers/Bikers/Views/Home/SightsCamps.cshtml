@@ -1,0 +1,46 @@
+﻿@using Bikers.Helpers
+
+@model IEnumerable<Bikers.Models.Camps>
+
+@{
+    ViewBag.Title = "SightsCamps";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title">
+                    <h2>Camps</h2>
+                    <p>This is the latest news section regarding Camps.</p>
+                </div>
+                <div id="blog-post" class="owl-carousel">
+
+                    @foreach (var item in Model)
+                    {
+                        <div>
+                            <div class="block">
+                                <img src="~/Content/Images/CampsImg/@item.Image" alt="" class="img-responsive">
+
+                                <div class="content">
+                                    <h4>@item.Name</h4>
+                                    <small>By admin / @Html.ShowDate(item.CreatedOn)</small>
+
+                                    <p>
+                                        <span class="icon"><i class="ion-quote"></i></span>
+                                        <h3>@item.Remarks</h3>
+                                        <span class="icon"><i class="ion-quote"></i></span>
+                                    </p>
+
+
+                                    <a href="~/Home/CampsNews/?id=@item.Id" class="btn btn-read">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

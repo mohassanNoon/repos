@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Bikers.Models.TeamMembers>
+
+@{
+    ViewBag.Title = "OurTeam";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<section id="team">
+    <div class="container">
+        <div class="row">
+            <div class="title">
+                <h2>CREATIVE TEAM</h2>
+                <p>"Coming together is a beginning. Keeping together is progress.  <br> Working together is success." --Henry Ford</p>
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 col-sm-4 col-xs-6">
+
+                    <div class="block wow fadeInLeft" data-wow-delay=".3s">
+                        <img src="~/Content/images/TeamMembers/@item.Image" alt="">
+                        <div class="team-overlay">
+                            <h3>@item.Name<span>@item.Designation</span></h3>
+                            <h4>Phone Number<span>@item.PhoneNumber</span></h4>
+
+                            <span class="icon"><i class="ion-quote"></i></span>
+                            <p>@item.Description</p>
+                        </div>
+                    </div>
+
+                </div>
+            }
+            @*<div class="col-md-4  col-sm-4 col-xs-6">
+                    <div class="block wow fadeInLeft" data-wow-delay=".6s">
+                        <img src="~/Content/img/team-img2.jpg" alt="">
+                        <div class="team-overlay">
+                            <h3>ROBERT SMITH <span>Product Designer</span></h3>
+                            <span class="icon"><i class="ion-quote"></i></span>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4  col-sm-4 col-xs-6">
+                    <div class="block wow fadeInLeft" data-wow-delay=".9s">
+                        <img src="~/Content/img/team-img3.jpg" alt="">
+                        <div class="team-overlay">
+                            <h3>ROBERT SMITH <span>Product Designer</span></h3>
+                            <span class="icon"><i class="ion-quote"></i></span>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+</section>
+

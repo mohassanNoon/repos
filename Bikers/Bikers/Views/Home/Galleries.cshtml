@@ -1,0 +1,210 @@
+﻿@model IEnumerable<Bikers.Models.Gallery>
+
+@{
+    ViewBag.Title = "Galleries";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title">
+                    <h2>Image Gallery</h2>
+                    <p>Here you can find our Tour Images</p>
+                </div>
+                <div class="block">
+                    <div class="recent-work-pic">
+                        <ul id="mixed-items">
+                            @foreach (var item in Model)
+                            {
+                                <li class="mix category-1 col-md-4 col-xs-6" data-my-order="1">
+                                    <a class="example-image-link" href="~/Content/images/GalleryImages/@item.Images" data-lightbox="example-set">
+                                        <img class="img-responsive" src="~/Content/images/GalleryImages/@item.Images" alt="">
+                                        <div class="overlay">
+                                            <h3>@item.Name</h3>
+                                            <i class="ion-ios-plus-empty"></i>
+                                            <br />
+                                            <br />
+                                            <h4>@item.Description</h4>
+                                        </div>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@*<section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h2>LATEST WORKS</h2>
+                        <p>Dantes remained confused and silent by this explanation of the <br> thoughts which had unconsciously</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+
+                <link href='https://fonts.googleapis.com/css?family=Leckerli+One|Metrophobic' rel='stylesheet' type='text/css'>
+
+                <a href="#" class="icon_list" data-js="list">
+                    <span>• -</span>
+                    <span>• -</span>
+                    <span>• -</span>
+                </a>
+
+                <div class="wrapper">
+                    <div class="wrapper_inner">
+                        <section class="gallery">
+
+                            @foreach (var item in Model)
+                            {
+                                <div class="gallery_item">
+                                    <span class="gallery_item_preview">
+                                        <a href="#" data-js="1">
+                                            <svg fill="#f55" class="gallery_top" viewbox="0 3 60 20">
+                                                <path d="M 0.65359477,1.3817905 C 60.201925,8.44316 121.92863,11.583451 175.81699,28.832771 l 0.6536,-28.10457531 z"></path>
+                                            </svg>
+                                            <img src="~/Content/images/GalleryImages/@item.Images" alt="" /><span>
+                                                <h3>@item.Name</h3>
+                                                <p>@item.Description</p>
+                                            </span>
+                                        </a>
+                                    </span>
+                                    <div data-lk="1" class="gallery_item_full" style="z-index: 100000000 !important;">
+                                        <div class="box">
+                                            <img src="~/Content/images/GalleryImages/@item.Images" alt="" />
+                                            <h3>@item.Name</h3>
+                                            <p> @item.Description</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </section>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+        </div>
+    </section>*@
+
+
+@section scripts{
+    @*<script>
+            $(document).ready(function () {
+
+                var gallery = (function () {
+
+                    'use strict';
+
+                    // vars
+                    var gal_item = $('.gallery_item'),
+                        gal_img = $('.gallery_item_preview a img'),
+                        gal_full = $('.gallery_item_full'),
+                        gal_box = $('.box'),
+                        gal_top = $('.gallery_top');
+
+
+                    return {
+                        // this.js(obj)
+                        js: function (e) { return $("[data-js=" + e + "]"); },
+                        // this.lk(obj)
+                        lk: function (e) { return $("[data-lk=" + e + "]"); },
+                        // Ready functions
+                        ready_: function () { this.events(); },
+                        //  functions
+                        events: function () {
+                            var self = this;
+                            // add close link
+                            gal_full.append('<a href="#" data-js="cl" class="cl">X</a>');
+                            // Get all data js and add clickOn function
+                            var k = $('a[data-js]');
+                            k.each(function (i, v) {
+                                i = i + 1;
+                                self.clickOn(i);
+                            });
+                            // close on click
+                            self.js('cl').on("click", function (e) {
+                                e.preventDefault();
+                                self.fx_out(gal_full);
+                                self.fx_out(gal_box);
+                            });
+
+                            // list style
+                            self.js('list').on("click", function (e) {
+                                e.preventDefault();
+                                // toggle class
+                                gal_item.toggleClass('gallery_item_list');
+                                gal_img.toggleClass('gallery_line');
+
+
+                                // change icon style
+                                if (gal_item.hasClass('gallery_item_list')) {
+                                    $(this).addClass('icon_list_open')
+                                        .html('<span>•••</span>' +
+                                        '<span>•••</span>' +
+                                        '<span>•••</span>');
+                                    gal_top.attr("class", "gallery_top gallery_hide_top");
+                                } else {
+                                    $(this).removeClass('icon_list_open')
+                                        .html('<span>• -</span>' +
+                                        '<span>• -</span>' +
+                                        '<span>• -</span>');
+                                    gal_top.attr("class", "gallery_top");
+                                }
+                            });
+                        },
+                        // Show on click
+                        clickOn: function (i) {
+                            var self = this;
+                            this.js(i).on('click', function (e) {
+                                e.preventDefault();
+                                self.fx_in(self.lk(i));
+                                self.fx_in(gal_box);
+                            });
+                        },
+                        // out function
+                        fx_out: function (el) {
+                            el.addClass('efOut')
+                                .delay(500)
+                                .fadeOut('fast')
+                                .removeClass('efIn');
+                            // show scroll
+                            $('body').css({ overflow: 'auto' });
+                            return false;
+                        },
+                        // in function
+                        fx_in: function (el) {
+                            el.removeClass('efOut')
+                                .show(200)
+                                .addClass('efIn');
+                            // hide scroll
+                            $('body').css({ overflow: 'hidden' });
+                            return false;
+                        }
+                    };
+                })();
+                // ready function of gallery
+                gallery.ready_();
+            });
+        </script>*@
+
+}
+
+
